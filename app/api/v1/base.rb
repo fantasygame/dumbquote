@@ -15,5 +15,6 @@ module V1
     content_type :json, V1::Constants::CONTENT_TYPE
 
     mount Users
+    mount Quotes
   end
 end
