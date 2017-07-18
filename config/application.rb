@@ -27,5 +27,17 @@ module Dumbquote
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.middleware.use Rack::Attack
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+        resource "/api/*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
+
+    config.paths.add File.join("app", "api"), glob: File.join("**", "*.rb")
+    config.eager_load_paths += Dir[Rails.root.join("app", "api", "*"), Rails.root.join("lib")]
   end
 end

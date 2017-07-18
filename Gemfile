@@ -20,6 +20,28 @@ gem "turbolinks", "~> 5"
 # authentication
 gem "devise"
 gem "doorkeeper"
+gem "rack-attack"
+gem "rack-cors"
+
+# authorization
+gem "pundit"
+
+# grape
+gem "grape"
+gem "grape-active_model_serializers"
+gem "grape-swagger"
+gem "grape-swagger-rails", "~> 0.3.0"
+gem "grape_logging"
+gem "hashie-forbidden_attributes" # needed to make grape params validation work
+
+# jsonapi
+gem "grape-jsonapi-resources"
+gem "jsonapi-resources"
+
+# pagination
+gem "grape-kaminari"
+gem "kaminari"
+gem "kaminari-grape"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
