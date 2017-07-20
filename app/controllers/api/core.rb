@@ -8,7 +8,7 @@ module API
     include ErrorHandlers
     helpers AuthHelper
 
-    before { authenticate_user! }
+    # before { authenticate_user! } # FIXME disabled until it is handled in clients well
     mount API::V1::Base
 
     add_swagger_documentation \
