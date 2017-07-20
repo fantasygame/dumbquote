@@ -5,10 +5,14 @@ const Actions = {};
 
 
 Actions.createQuote = (content, dispatch) => {
-  let createdQuote = {id: 3, content: "Created quote"} // Fake api result
-  dispatch({
-    type: Constants.QUOTE_CREATED,
-    createdQuote: createdQuote
+  QuotesAPI.createQuote(content).then(function (response) {
+    let id = response.data.data.id;
+    let createdQuote = {id: id, content: content};
+
+    dispatch({
+      type: Constants.QUOTE_CREATED,
+      createdQuote: createdQuote
+    })
   })
 }
 
