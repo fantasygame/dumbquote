@@ -1,17 +1,25 @@
 import React from 'react'
+import Quote from './quote'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
+  _renderQuotes(quotes) {
+    return quotes.map((quote) => {
+      return <Quote content={quote.content} />
+    });
+  }
+
   render() {
     return (
       <div>
-        Dumb Quote
+        {::this._renderQuotes(this.props.quotes.quotes)}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
+  quotes: state.quotes
 });
 
 export default connect(mapStateToProps)(App);
