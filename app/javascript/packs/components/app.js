@@ -1,5 +1,6 @@
 import React from 'react'
 import Quote from './quote'
+import QuoteInput from './quoteInput'
 import { connect } from 'react-redux'
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <QuoteInput dispatch={this.props.dispatch} />
         {::this._renderQuotes(this.props.quotes.quotes)}
       </div>
     )
