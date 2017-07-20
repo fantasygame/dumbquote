@@ -1,4 +1,5 @@
 import Constants from '../constants';
+import QuotesAPI from '../api/quotes';
 
 const Actions = {};
 
@@ -12,10 +13,16 @@ Actions.createQuote = (content, dispatch) => {
 }
 
 Actions.fetchQuotes = (dispatch) => {
-  let fetchedQuotes = [{id: 1, content: "Fetched quote 1"}, {id: 2, content: "Fetched quote 2"}] // Fake api result
-  dispatch({
-    type: Constants.QUOTES_FETCHED,
-    fetchedQuotes: fetchedQuotes
+  QuotesAPI.getQuotes().then(function (response) {
+    let fetchedQuotes =
+      response.data.data.map(function(jsonapiObject) {
+        return Object.assign(
+          {id: jsonapiObject.id }, jsonapiObject.attributes); }
+        );
+    dispatch({
+      type: Constants.QUOTES_FETCHED,
+      fetchedQuotes: fetchedQuotes
+    })
   })
 }
 
