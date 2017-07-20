@@ -7,8 +7,9 @@ const initialState = {
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case Constants.QUOTE_CREATED:
-      state.quotes.push(action.createdQuote);
-      return { ...state, quotes: state.quotes };
+      let quotes = state.quotes;
+      quotes.push(action.createdQuote);
+      return { ...state, quotes: quotes };
     case Constants.QUOTES_FETCHED:
       return { ...state, quotes: action.fetchedQuotes };
     default:
