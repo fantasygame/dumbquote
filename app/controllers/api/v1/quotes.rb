@@ -25,6 +25,17 @@ module API
             Quote.find(params[:id])
           end
         end
+
+        desc "Create new quote"
+        params do
+          requires :content, type: String, desc: "New quote content"
+        end
+        post do
+          Quote.create!(
+            user: User.first,
+            content: params[:content],
+          )
+        end
       end
     end
   end
