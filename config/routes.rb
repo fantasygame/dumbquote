@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "react#index"
 
   # Grape-specific config
-  mount API, at: "/"
+  mount API::Core, at: "/"
 
   authenticate :user, lambda { |u| u.admin? } do
     mount GrapeSwaggerRails::Engine => "/swagger"
