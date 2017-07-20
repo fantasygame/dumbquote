@@ -2,8 +2,14 @@ import React from 'react'
 import Quote from './quote'
 import QuoteInput from './quoteInput'
 import { connect } from 'react-redux'
+import Actions from '../actions/quotes'
 
 class App extends React.Component {
+  componentDidMount() {
+    const { dispatch } = this.props;
+    Actions.fetchQuotes(dispatch);
+  }
+
   _renderQuotes(quotes) {
     return quotes.map((quote) => {
       return <Quote key={quote.id} content={quote.content} />
